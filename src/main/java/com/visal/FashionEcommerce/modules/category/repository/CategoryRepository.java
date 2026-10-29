@@ -17,7 +17,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<Category> findByParentIdIsNullAndStatusTrue();
 
     Page<Category> findByNameContainingIgnoreCaseAndStatusTrue(
-            String name,
+            String keyword,
             Pageable pageable
     );
 
@@ -25,8 +25,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 //            String name,
 //            Pageable pageable
 //    );
-
-
 
     /*
 
@@ -37,8 +35,5 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<Category> findByParentIdId(Long parentId);
 
     */
-
-
-
 
 }

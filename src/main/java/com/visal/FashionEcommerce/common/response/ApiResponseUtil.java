@@ -1,11 +1,13 @@
 package com.visal.FashionEcommerce.common.response;
 
 public class ApiResponseUtil {
+
     public static <T> ApiResponse<T> success(
             String message,
             T data
     ){
         return new ApiResponse<>(
+                true,
                 200,
                 message,
                 data
@@ -18,6 +20,7 @@ public class ApiResponseUtil {
             T data
     ){
         return new ApiResponse<>(
+                true,
                 201,
                 message,
                 data
@@ -29,6 +32,7 @@ public class ApiResponseUtil {
             String message
     ){
         return new ApiResponse<>(
+                false,
                 status,
                 message,
                 null

@@ -63,6 +63,7 @@ public class CategoryServiceImpl implements CategoryService {
 
             category.setParentId(parentCategoryId);
         }
+
         Category savedCategory = categoryRepository.save(category);
 
         return categoryMapper.toResponse(savedCategory);

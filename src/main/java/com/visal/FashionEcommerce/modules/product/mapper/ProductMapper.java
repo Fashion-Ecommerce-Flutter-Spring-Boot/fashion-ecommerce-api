@@ -1,6 +1,6 @@
 package com.visal.FashionEcommerce.modules.product.mapper;
 
-import com.visal.FashionEcommerce.brand.model.Brand;
+import com.visal.FashionEcommerce.modules.brand.model.Brand;
 import com.visal.FashionEcommerce.modules.product.model.Product;
 import com.visal.FashionEcommerce.modules.product.payload.dto.ProductDTO;
 
@@ -15,7 +15,7 @@ public class ProductMapper {
         productDTO.setStatus(product.getStatus());
         productDTO.setDescription(product.getDescription());
 
-        com.visal.FashionEcommerce.brand.model.Brand brand = new Brand();
+        Brand brand = new Brand();
 
         return productDTO;
     }

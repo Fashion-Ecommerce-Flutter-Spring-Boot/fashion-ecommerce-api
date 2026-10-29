@@ -1,6 +1,6 @@
 package com.visal.FashionEcommerce.modules.product.model;
 
-import com.visal.FashionEcommerce.brand.model.Brand;
+import com.visal.FashionEcommerce.modules.brand.model.Brand;
 import com.visal.FashionEcommerce.modules.category.model.Category;
 import com.visal.FashionEcommerce.modules.discount.model.Discount;
 import com.visal.FashionEcommerce.product.enums.ProductStatus;

@@ -4,7 +4,6 @@ import com.visal.FashionEcommerce.common.response.ApiResponse;
 import com.visal.FashionEcommerce.common.response.ApiResponseUtil;
 import com.visal.FashionEcommerce.modules.category.dto.request.CategoryRequestDTO;
 import com.visal.FashionEcommerce.modules.category.dto.response.CategoryResponseDTO;
-import com.visal.FashionEcommerce.modules.category.model.Category;
 import com.visal.FashionEcommerce.modules.category.service.CategoryService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -112,7 +111,7 @@ public class CategoryController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<ApiResponse<Page<CategoryResponseDTO>>> search(
+    public ResponseEntity<ApiResponse<Page<CategoryResponseDTO>>> searchCategories(
         @RequestParam(defaultValue = "") String keyword,
         @PageableDefault(
             page = 0,
