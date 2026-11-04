@@ -33,6 +33,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "profile_image_id")
+    private Long profileImageId;
+
     @Column(nullable = false)
     private boolean status = true;
 

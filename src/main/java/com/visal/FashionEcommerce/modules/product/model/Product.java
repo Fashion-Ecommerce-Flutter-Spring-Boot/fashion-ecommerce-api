@@ -11,6 +11,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -47,6 +49,17 @@ public class Product {
     @Column(nullable = false, length = 30)
     @Builder.Default
     private ProductStatus status = ProductStatus.DRAFT;
+
+    @OneToMany(
+            mappedBy = "product",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+            // orphanRemoval = true so removing a
+            // ProductAttachment from the collection
+            // deletes its relationship record
+    )
+    @OrderBy("displayOrder ASC")
+    private List<ProductAttachment> attachments = new ArrayList<>();
 
     @CreationTimestamp
     @Column(name = "create_at", nullable = false)
