@@ -1,6 +1,6 @@
 package com.visal.FashionEcommerce.product.repository;
 
-import com.visal.FashionEcommerce.product.enums.ProductStatus;
+import com.visal.FashionEcommerce.modules.product.enums.ProductStatus;
 import com.visal.FashionEcommerce.modules.product.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

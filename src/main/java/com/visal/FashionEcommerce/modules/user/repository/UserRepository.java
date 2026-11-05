@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<Long, User> {
-    boolean existsByProfileImage(Long attachmentId);
+public interface UserRepository extends JpaRepository<User, Long> {
+    boolean existsByProfileImageId(Long attachmentId);
 }

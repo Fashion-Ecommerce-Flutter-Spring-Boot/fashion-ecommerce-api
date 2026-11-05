@@ -2,8 +2,8 @@ package com.visal.FashionEcommerce.modules.product.model;
 
 import com.visal.FashionEcommerce.modules.brand.model.Brand;
 import com.visal.FashionEcommerce.modules.category.model.Category;
-import com.visal.FashionEcommerce.modules.discount.model.Discount;
-import com.visal.FashionEcommerce.product.enums.ProductStatus;
+import com.visal.FashionEcommerce.modules.discount.model.Discounts;
+import com.visal.FashionEcommerce.modules.product.enums.ProductStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -26,6 +26,13 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 200)
+    @NotBlank(message = "Product name is required")
+    private String name;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
@@ -36,14 +43,7 @@ public class Product {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "discount_id")
-    private Discount discount;
-
-    @Column(nullable = false, length = 200)
-    @NotBlank(message = "Product name is required")
-    private String name;
-
-    @Column(columnDefinition = "TEXT")
-    private String description;
+    private Discounts discount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
@@ -66,7 +66,7 @@ public class Product {
     private LocalDateTime createAt;
 
     @UpdateTimestamp
-    @Column(name = "update_at")
+    @Column(name = "updated_at")
     private LocalDateTime updateAt;
 
 }

@@ -1,4 +1,4 @@
-package com.visal.FashionEcommerce.product.enums;
+package com.visal.FashionEcommerce.modules.product.enums;
 
 public enum ProductStatus {
     DRAFT,

@@ -11,6 +11,7 @@ import com.visal.FashionEcommerce.modules.attachment.repository.AttachmentReposi
 import com.visal.FashionEcommerce.modules.attachment.service.AttachmentService;
 import com.visal.FashionEcommerce.modules.attachment.validator.AttachmentValidator;
 import com.visal.FashionEcommerce.modules.product.model.ProductAttachment;
+import com.visal.FashionEcommerce.modules.product.repository.ProductAttachmentRepository;
 import com.visal.FashionEcommerce.modules.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class AttachmentServiceImpl implements AttachmentService {
     private final AttachmentMapper attachmentMapper;
     private final AttachmentValidator attachmentValidator;
     private final UserRepository userRepository;
-    private final ProductAttachment productAttachment;
+    private final ProductAttachmentRepository productAttachmentRepository;
 
     @Override
     public AttachmentResponseDTO upload(MultipartFile file) {
@@ -98,9 +99,9 @@ public class AttachmentServiceImpl implements AttachmentService {
                 .findById(id).orElseThrow(()->
                         new ResourceNotFoundException("Attachment not found with ID: "+ id)
                 );
-        // check first before delete
-        if(userRepository.existsByProfileImage(id)
-        || userRepository.existsByProfileImage(id)){
+        // check first before deleteDiscount
+        if(userRepository.existsByProfileImageId(id)
+        || productAttachmentRepository.existsByAttachmentId(id)){
             throw new BadRequestException("Attachment is currently being used");
         }
 
@@ -113,7 +114,7 @@ public class AttachmentServiceImpl implements AttachmentService {
             );
                 attachmentRepository.delete(attachment);
         } catch (Exception e) {
-            throw new RuntimeException("Fail to delete attachment");
+            throw new RuntimeException("Fail to deleteDiscount attachment");
         }
     }
 }

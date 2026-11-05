@@ -8,9 +8,4 @@ import java.util.Optional;
 public interface AttachmentRepository extends JpaRepository<Attachment, Long> {
     Optional<Attachment> findByPublicId(String publicId);
 
-    boolean existsById(Long id);
-
-
-
-
 }

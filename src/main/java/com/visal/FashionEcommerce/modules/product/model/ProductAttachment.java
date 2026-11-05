@@ -36,5 +36,5 @@ public class ProductAttachment {
     private Boolean isPrimary;
 
     @Column(nullable = false)
-    private Integer display;
+    private Integer displayOrder;
 }

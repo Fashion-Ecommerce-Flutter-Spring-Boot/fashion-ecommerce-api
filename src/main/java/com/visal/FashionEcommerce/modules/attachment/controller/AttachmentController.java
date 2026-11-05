@@ -32,7 +32,7 @@ public class AttachmentController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("deleteDiscount/{id}")
     public ResponseEntity<ApiResponse<AttachmentResponseDTO>>  deleteAttachment(
         @PathVariable Long id
     ){

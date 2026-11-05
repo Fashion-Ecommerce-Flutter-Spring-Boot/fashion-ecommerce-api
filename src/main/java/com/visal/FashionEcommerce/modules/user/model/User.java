@@ -48,6 +48,7 @@ public class User {
     private LocalDateTime createAt;
 
     @UpdateTimestamp
+    @Column(name = "updated_at")
     private LocalDateTime updateAt;
 
 }
