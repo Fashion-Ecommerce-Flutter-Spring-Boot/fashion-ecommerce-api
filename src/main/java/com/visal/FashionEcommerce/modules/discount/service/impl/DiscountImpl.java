@@ -7,7 +7,7 @@ import com.visal.FashionEcommerce.modules.discount.dto.response.DiscountResponse
 import com.visal.FashionEcommerce.modules.discount.enums.DiscountStatus;
 import com.visal.FashionEcommerce.modules.discount.enums.DiscountType;
 import com.visal.FashionEcommerce.modules.discount.mapper.DiscountMapper;
-import com.visal.FashionEcommerce.modules.discount.model.Discounts;
+import com.visal.FashionEcommerce.modules.discount.model.Discount;
 import com.visal.FashionEcommerce.modules.discount.repository.DiscountRepository;
 import com.visal.FashionEcommerce.modules.discount.service.DiscountService;
 import jakarta.transaction.Transactional;
@@ -32,20 +32,20 @@ public class DiscountImpl implements DiscountService {
 
         validateDiscount(requestDTO);
 
-        Discounts discounts = discountMapper.toEntity(requestDTO);
+        Discount discounts = discountMapper.toEntity(requestDTO);
 
         if(discountRepository.existsByNameIgnoreCase(requestDTO.getName())){
             throw  new BadRequestException("Discount name already exists");
         }
 
-        Discounts savedDiscount = discountRepository.save(discounts);
+        Discount savedDiscount = discountRepository.save(discounts);
 
         return discountMapper.toResponse(savedDiscount);
     }
 
     @Override
     public DiscountResponseDTO getDiscountById(Long id) {
-        Discounts discount = discountRepository
+        Discount discount = discountRepository
                 .findById(id).orElseThrow(()->
                         new ResourceNotFoundException(
                                 "Discount not found with ID: " + id)
@@ -57,17 +57,18 @@ public class DiscountImpl implements DiscountService {
 
     @Override
     public Page<DiscountResponseDTO> getAllDiscounts(Pageable pageable) {
-        Page<Discounts> discounts = discountRepository.findAll(pageable);
+        Page<Discount> discounts = discountRepository.findAll(pageable);
         return discounts.map(discountMapper::toResponse);
     }
 
     @Override
     public DiscountResponseDTO updateDiscount(Long id, DiscountRequestDTO requestDTO) {
 
-        Discounts discount = discountRepository.findById(id).orElseThrow(()->
+        Discount discount = discountRepository.findById(id).orElseThrow(()->
                 new ResourceNotFoundException(
                         "Discount not found with ID: " + id)
         );
+
         validateDiscount(requestDTO);
 
         discount.setName(requestDTO.getName());
@@ -77,7 +78,7 @@ public class DiscountImpl implements DiscountService {
         discount.setStartDate(requestDTO.getStartDate());
         discount.setEndDate(requestDTO.getEndDate());
 
-        Discounts savedDiscounts = discountRepository.save(discount);
+        Discount savedDiscounts = discountRepository.save(discount);
         DiscountResponseDTO response = discountMapper.toResponse(savedDiscounts);
         response.setStatus(getDiscountStatus(savedDiscounts));
 
@@ -86,7 +87,7 @@ public class DiscountImpl implements DiscountService {
 
     @Override
     public void deleteDiscount(Long id) {
-        Discounts discount = discountRepository
+        Discount discount = discountRepository
                 .findById(id).orElseThrow(()->
                         new ResourceNotFoundException(
                                 "Discount not found with ID: " + id)
@@ -94,7 +95,7 @@ public class DiscountImpl implements DiscountService {
         discountRepository.delete(discount);
     }
 
-    private DiscountStatus getDiscountStatus(Discounts discount){
+    private DiscountStatus getDiscountStatus(Discount discount){
 
         LocalDateTime now = LocalDateTime.now();
 

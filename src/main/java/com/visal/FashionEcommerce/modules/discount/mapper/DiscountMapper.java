@@ -2,15 +2,15 @@ package com.visal.FashionEcommerce.modules.discount.mapper;
 
 import com.visal.FashionEcommerce.modules.discount.dto.request.DiscountRequestDTO;
 import com.visal.FashionEcommerce.modules.discount.dto.response.DiscountResponseDTO;
-import com.visal.FashionEcommerce.modules.discount.model.Discounts;
+import com.visal.FashionEcommerce.modules.discount.model.Discount;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DiscountMapper {
 
-    public Discounts toEntity(DiscountRequestDTO requestDTO){
+    public Discount toEntity(DiscountRequestDTO requestDTO){
 
-        Discounts discount = new Discounts();
+        Discount discount = new Discount();
         discount.setName(requestDTO.getName());
         discount.setDiscountType(requestDTO.getDiscountType());
         discount.setDiscountValue(requestDTO.getDiscountValue());
@@ -21,7 +21,7 @@ public class DiscountMapper {
         return discount;
     }
     
-    public DiscountResponseDTO toResponse(Discounts discount){
+    public DiscountResponseDTO toResponse(Discount discount){
         return DiscountResponseDTO.builder()
                 .id(discount.getId())
                 .name(discount.getName())

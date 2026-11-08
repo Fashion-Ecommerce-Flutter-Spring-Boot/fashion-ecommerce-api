@@ -34,7 +34,7 @@ public class CategoryMapper {
                 .description(category.getDescription())
                 .status(category.isStatus())
                 .createAt(category.getCreateAt())
-                .updateAt(category.getUpdateAt())
+                .updatedAt(category.getUpdatedAt())
                 .build();
 
     }

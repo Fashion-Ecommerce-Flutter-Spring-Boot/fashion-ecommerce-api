@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/discounts")
-@Tag(name = "Discounts API")
+@Tag(name = "Discount API")
 public class DiscountController {
 
     private  final DiscountService discountService;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<ApiResponse<DiscountResponseDTO>> createDiscount(
            @Valid @RequestBody DiscountRequestDTO responseDTO
     ){
@@ -61,7 +61,7 @@ public class DiscountController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<DiscountResponseDTO>> updateDiscount(
             @PathVariable Long id ,
             @Valid @RequestBody  DiscountRequestDTO requestDTO

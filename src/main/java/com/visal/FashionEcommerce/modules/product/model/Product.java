@@ -2,10 +2,11 @@ package com.visal.FashionEcommerce.modules.product.model;
 
 import com.visal.FashionEcommerce.modules.brand.model.Brand;
 import com.visal.FashionEcommerce.modules.category.model.Category;
-import com.visal.FashionEcommerce.modules.discount.model.Discounts;
+import com.visal.FashionEcommerce.modules.discount.model.Discount;
 import com.visal.FashionEcommerce.modules.product.enums.ProductStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -31,19 +32,21 @@ public class Product {
     private String name;
 
     @Column(columnDefinition = "TEXT")
+    @NotBlank(message = "Product description is required")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
+    //@NotNull(message = "Product category is required")
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "brand_id")
+    @JoinColumn(name = "brand_id", nullable = true)
     private Brand brand;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "discount_id")
-    private Discounts discount;
+    @JoinColumn(name = "discount_id", nullable = true)
+    private Discount discount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
@@ -67,6 +70,6 @@ public class Product {
 
     @UpdateTimestamp
     @Column(name = "updated_at")
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
 
 }

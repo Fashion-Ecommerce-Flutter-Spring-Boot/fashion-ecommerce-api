@@ -1,10 +1,6 @@
 package com.visal.FashionEcommerce.modules.category.dto.response;
 
-import com.visal.FashionEcommerce.modules.category.model.Category;
-import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -29,5 +25,5 @@ public class CategoryResponseDTO {
 
     private LocalDateTime createAt;
 
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
 }

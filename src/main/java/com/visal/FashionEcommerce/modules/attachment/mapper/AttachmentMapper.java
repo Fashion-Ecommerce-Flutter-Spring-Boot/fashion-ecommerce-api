@@ -18,5 +18,22 @@ public class AttachmentMapper {
                 .createAt(attachment.getCreateAt())
                 .build();
     }
+    public AttachmentResponseDTO toResponse(Attachment attachment) {
+
+        if (attachment == null) {
+            return null;
+        }
+
+        return AttachmentResponseDTO.builder()
+                .id(attachment.getId())
+                .originalFileName(attachment.getOriginalFileName())
+                .mimeType(attachment.getMimeType())
+                .fileSize(attachment.getFileSize())
+                .url(attachment.getUrl())
+                .publicId(attachment.getPublicId())
+                .resourceType(attachment.getResourceType())
+                .createAt(attachment.getCreateAt())
+                .build();
+    }
 
 }

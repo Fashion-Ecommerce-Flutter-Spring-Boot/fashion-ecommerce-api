@@ -1,6 +1,5 @@
 package com.visal.FashionEcommerce.modules.discount.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.visal.FashionEcommerce.modules.discount.enums.DiscountStatus;
 import com.visal.FashionEcommerce.modules.discount.enums.DiscountType;
 import jakarta.persistence.*;
@@ -21,7 +20,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Discounts {
+public class Discount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +31,7 @@ public class Discounts {
     private String name;
 
     @Column(name = "discount_type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private DiscountType discountType;
 
     @Column(name = "discount_value", nullable = false)

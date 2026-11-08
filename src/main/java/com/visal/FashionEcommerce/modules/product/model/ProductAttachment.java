@@ -1,5 +1,6 @@
 package com.visal.FashionEcommerce.modules.product.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.visal.FashionEcommerce.modules.attachment.model.Attachment;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class ProductAttachment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
+    @JsonIgnore
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)

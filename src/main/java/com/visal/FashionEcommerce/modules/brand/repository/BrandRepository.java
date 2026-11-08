@@ -1,6 +1,5 @@
 package com.visal.FashionEcommerce.modules.brand.repository;
 
-import com.visal.FashionEcommerce.modules.brand.dto.response.BrandResponseDTO;
 import com.visal.FashionEcommerce.modules.brand.model.Brand;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
